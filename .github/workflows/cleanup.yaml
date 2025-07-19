@@ -6,10 +6,14 @@ on:
 #   actions: read
 #   pull-requests: read
 
-# jobs:
-#   remove-stale-branches:
-#     name: Remove Stale Branches
-#     runs-on: ubuntu-latest
+jobs:
+  remove-stale-branches:
+    name: Remove Stale Branches
+    runs-on: ubuntu-latest
+    run:
+      |
+      print('Hello')
+
 #     steps:
 #       - uses: fpicalausa/remove-stale-branches@v1.6.0
 #         with:
