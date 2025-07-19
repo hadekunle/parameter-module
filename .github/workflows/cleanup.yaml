@@ -14,7 +14,6 @@ jobs:
       - uses: fpicalausa/remove-stale-branches@v1.6.0
         with:
           dry-run: true 
-          exempt-branches-regex: ^(main|master|ff)$
+          # exempt-branches-regex: ^(main|master|ff)$
           days-before-branch-stale: 7
           days-before-branch-delete: 7
-          ignore-branches-with-open-prs: true
