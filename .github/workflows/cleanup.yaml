@@ -1,6 +1,11 @@
 on:
   push:
 
+permissions:
+  contents: write
+  actions: read
+  pull-requests: read
+
 jobs:
   remove-stale-branches:
     name: Remove Stale Branches
@@ -9,3 +14,5 @@ jobs:
       - uses: fpicalausa/remove-stale-branches@v1.6.0
         with:
           dry-run: true # Check out the console output before setting this to false
+          days-before-branch-stale: 7
+          days-before-branch-delete: 7
