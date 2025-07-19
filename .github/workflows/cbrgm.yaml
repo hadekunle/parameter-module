@@ -20,3 +20,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
+          ignore-branches: "main"
+          ignored-prefixes: "feature/,bugfix/"
+          last-commit-age-days: 10
+          dry-run: false
+          rate-limit: true
