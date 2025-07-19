@@ -1,19 +1,19 @@
-on:
-  push:
+# on:
+#   push:
 
-permissions:
-  contents: write
-  actions: read
-  pull-requests: read
+# permissions:
+#   contents: write
+#   actions: read
+#   pull-requests: read
 
-jobs:
-  remove-stale-branches:
-    name: Remove Stale Branches
-    runs-on: ubuntu-latest
-    steps:
-      - uses: fpicalausa/remove-stale-branches@v1.6.0
-        with:
-          # dry-run: true 
-          # exempt-branches-regex: ^(main|master|ff)$
-          days-before-branch-stale: 7
-          days-before-branch-delete: 7
+# jobs:
+#   remove-stale-branches:
+#     name: Remove Stale Branches
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: fpicalausa/remove-stale-branches@v1.6.0
+#         with:
+#           # dry-run: true 
+#           # exempt-branches-regex: ^(main|master|ff)$
+#           days-before-branch-stale: 7
+#           days-before-branch-delete: 7
