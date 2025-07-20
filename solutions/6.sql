@@ -1,0 +1,3 @@
+-- 6.⁠ ⁠Find the month-over-month percentage change 
+-- in total housing units completed.
+-- Use table: tutorial.us_housing_units
