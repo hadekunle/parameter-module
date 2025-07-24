@@ -12,3 +12,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: shmokmt/actions-setup-tfcmt@v2
+
+  deploy:
+    name: terraform stuff
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60 
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials from AWS account
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          # aws-region: ${{ secrets.AWS_REGION }}
+          # role-to-assume: ${{ secrets.AWS_ROLE }}
+          role-session-name: GitHub-OIDC-TERRAFORM
+          output-credentials: false
+
+      - name: Verify AWS Credentials
+        run: aws sts get-caller-identity
+        continue-on-error: true
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.10
+
+      - name: Determine Environment
+        run: |
+          if [[ "${{ github.ref_name }}" == "main" ]]; then
+            echo "git_env=prod" >> $GITHUB_ENV
+          elif [[ "${{ github.ref_name }}" == "test" ]]; then
+            echo "git_env=test" >> $GITHUB_ENV
+          else
+            echo "git_env=dev" >> $GITHUB_ENV
+          fi
+        env:
+          git_env: ${{ env.git_env }}
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan
