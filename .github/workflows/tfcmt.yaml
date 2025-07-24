@@ -1,0 +1,14 @@
+on:
+  push:
+
+permissions:
+  contents: write
+  actions: read
+  pull-requests: read
+
+jobs:
+  remove-stale-branches:
+    name: Remove Stale Branches
+    runs-on: ubuntu-latest
+    steps:
+      - uses: shmokmt/actions-setup-tfcmt@v2
