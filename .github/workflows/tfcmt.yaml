@@ -7,8 +7,8 @@ permissions:
   pull-requests: read
 
 jobs:
-  remove-stale-branches:
-    name: Remove Stale Branches
+  terraform-cmt:
+    name: Terraform Comment
     runs-on: ubuntu-latest
     steps:
       - uses: shmokmt/actions-setup-tfcmt@v2
