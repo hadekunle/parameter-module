@@ -25,7 +25,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-1
-          role-to-assume: ${{ secrets.AWS_ROLE }}
+          role-to-assume: github-oidc-actions-tfstate-role
           role-session-name: GitHub-OIDC-TERRAFORM
           output-credentials: false
 
